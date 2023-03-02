@@ -19,12 +19,30 @@ Il affiche un graphique en barres qui s'agrandit plus fort le signal et plus pr�
 vous trouvez.
 Il déclenche une alarme visuelle ou audible quand quelqu'un se rapproche trop.
 
-## Etape 1 : emmeteur
-``||basic: Au démarrage||``, il faut régler « radio définir groupe » dans la même plage pour les deux cartes
+## Etape 1 : emetteur/balise
+``||basic: Au démarrage||``, il faut régler ``||radio: radio définir groupe||`` dans la même plage pour les deux cartes
 (groupe 1 dans notre exemple) Ces plages (groupes) peuvent aller de 1 à 256…
 Choisis le numéro correspondant à celui de ton îlot afin d'éviter les interférences entre toutes les cartes.
-Il faut également définir la puissance de transmission.
- ```blocks
+Il faut également ``||radio: radio définir puissance de transmission||`` à 1.
+```blocks
 radio.setGroup(1)
 radio.setTransmitPower(1)
- ```
+```
+
+ ## Etape 2 : emetteur/balise
+ En continu ``||basic: Toujours||``, on envoie une chaine de caractères (et pas un nombre)
+ toutes les 200ms. Ici ce texte est "1" qui correspond à la force du signal transmis.
+```blocks
+basic.forever(function () {
+    radio.sendString("1")
+    basic.pause(200)
+})
+```
+## Etape 3 : emetteur/balise
+Brancher la carte micro:bit en USB avec le câble fourni.
+![Afficher branchement](https://edu.tactileo.fr/storage/download?filePath=0750360J%2Fjtamen%2Fpublic%2Fjeu%20de%20nim-branchement.jpg)
+Téléverser le programme dans la carte micro:bit à l'aide de la commande "Télécharger".
+Il est également conseillé d'enregistrer le programme dans un dossier en le renommant afin de le recharger en dehors du tutoriel
+en cas de disfonctionnement. On pourra  ainsi utiliser le mode débogage. La procédure est la même.
+![Afficher bouton](https://edu.tactileo.fr/storage/download?filePath=0750360J%2Fjtamen%2Fpublic%2Fbp_telecharger.jpg)
+
