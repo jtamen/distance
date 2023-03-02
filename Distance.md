@@ -68,4 +68,32 @@ radio.onReceivedString(function (receivedString) {
     )
 })
 ```
+## Etape 3 : récepteur
+Si le ``||variables: signal||`` est supérieur à -60 (les 2 cartes sont très proches), alors on
+montre l'icône ``||basic: Faché||`` et on met la sortie ``||pins: P0||`` à 1 (alerte sonore).
+Sinon on met la sortie ``||pins: P0||`` à 0 (son coupé).
+```blocks
+radio.onReceivedString(function (receivedString) {
+    signal = radio.receivedPacket(RadioPacketProperty.SignalStrength)
+    led.plotBarGraph(
+    Math.map(signal, -95, -42, 0, 9),
+    0
+    )
+    if (signal > -60) {
+        basic.showIcon(IconNames.Angry)
+        pins.digitalWritePin(DigitalPin.P0, 1)
+    } else {
+        pins.digitalWritePin(DigitalPin.P0, 0)
+    }
+})
+```
 
+## Etape 4 : récepteur
+Brancher la carte micro:bit en USB avec le câble fourni.
+Connecter cette carte sur un shield possédant un buzzer en P0.
+![Afficher bouton](https://edu.tactileo.fr/storage/download?filePath=0750360J%2Fjtamen%2Fpublic%2FDistance.jpg)
+Téléverser le programme dans la carte micro:bit comme vu précédemment.
+Il est également conseillé d'enregistrer le programme dans un dossier.
+
+## FIN
+Tester vos cartes !
