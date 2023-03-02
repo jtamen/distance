@@ -29,7 +29,7 @@ radio.setGroup(1)
 radio.setTransmitPower(1)
 ```
 
- ## Etape 2 : emetteur/balise
+## Etape 2 : emetteur/balise
  En continu ``||basic: Toujours||``, on envoie une chaine de caractères (et pas un nombre)
  toutes les 200ms. Ici ce texte est "1" qui correspond à la force du signal transmis.
 ```blocks
